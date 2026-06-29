@@ -78,7 +78,7 @@ jobs:
       - name: Download all APK artifacts
         uses: actions/download-artifact@v4
         with:
-          pattern: NovaBox-*-Release-*
+          pattern: NovaBox-*
           merge-multiple: true
           path: release-apks/
 
