@@ -102,7 +102,7 @@ android {
             def flavorNames = variant.productFlavors.collect { it.name }.join('-')
             def nameMap = [
                 'java'    : 'general',
-                'java32'  : 'arm32',
+                'java32'  : 'armeabi-v7a',
                 'java64'  : 'arm64-v8a'
             ]
             def mappedName = nameMap[flavorNames] ?: flavorNames
