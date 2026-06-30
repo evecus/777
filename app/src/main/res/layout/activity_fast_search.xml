@@ -68,7 +68,8 @@
             android:minWidth="120dp"
             android:text="准备搜索&#10;结果 0"
             android:textColor="@android:color/black"
-            android:textSize="@dimen/ts_16"/>
+            android:textSize="@dimen/ts_16"
+            android:visibility="gone"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/mGridViewWordFenci"

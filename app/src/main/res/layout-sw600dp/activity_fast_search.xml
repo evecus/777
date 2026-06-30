@@ -69,7 +69,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#AA000000"
-            android:textSize="13sp"/>
+            android:textSize="13sp"
+            android:visibility="gone"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/mGridViewWordFenci"
