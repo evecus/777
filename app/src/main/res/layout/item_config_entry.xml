@@ -61,7 +61,7 @@
         android:layout_height="36dp"
         android:padding="8dp"
         android:src="@drawable/ic_edit"
-        android:contentDescription="编辑" />
+        android:contentDescription="编辑" android:tint="@android:color/black"/>
 
     <!-- Refresh button -->
     <ImageView
@@ -70,7 +70,7 @@
         android:layout_height="36dp"
         android:padding="8dp"
         android:src="@drawable/ic_refresh"
-        android:contentDescription="刷新" />
+        android:contentDescription="刷新" android:tint="@android:color/black"/>
 
     <!-- Delete button -->
     <ImageView
@@ -79,5 +79,5 @@
         android:layout_height="36dp"
         android:padding="8dp"
         android:src="@drawable/ic_close"
-        android:contentDescription="删除" />
+        android:contentDescription="删除" android:tint="@android:color/black"/>
 </LinearLayout>
