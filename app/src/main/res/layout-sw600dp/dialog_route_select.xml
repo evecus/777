@@ -23,7 +23,7 @@
                 android:id="@+id/rvConfigs"
                 android:layout_width="170dp"
                 android:layout_height="match_parent"
-                android:background="#1a2038" />
+                android:background="@android:color/transparent" />
 
             <!-- 分隔线 -->
             <View
@@ -58,7 +58,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="取消"
-                android:textColor="#AAFFFFFF"
+                android:textColor="#FF333333"
                 android:textSize="16sp" />
 
             <View
