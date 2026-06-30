@@ -266,16 +266,6 @@ public class ModelSettingFragment extends BaseLazyFragment {
             }
         });
 
-        // 网盘账号
-        findViewById(R.id.llPanAccount).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FastClickCheckUtil.check(v);
-                Intent intent = new Intent(mContext, com.mobile.novabox.ui.activity.PanAccountActivity.class);
-                startActivity(intent);
-            }
-        });
-
         // 线路选择 - 两栏弹窗
         llApiLine.setVisibility(View.VISIBLE);
         if (llApiLine != null) llApiLine.setVisibility(View.VISIBLE);
