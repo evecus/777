@@ -2556,8 +2556,9 @@ public class LivePlayActivity extends BaseActivity {
         View liveNavSetting = findViewById(R.id.liveNavSetting);
         if (liveNavHome != null) {
             liveNavHome.setOnClickListener(v -> {
+                // 不再新建 HomeActivity，只 finish 自己，复用栈底已存在的 HomeActivity，
+                // 行为与返回键 / 设置页"首页"按钮保持一致，避免重新加载刷新
                 finish();
-                jumpActivity(com.mobile.novabox.ui.activity.HomeActivity.class);
             });
         }
         if (liveNavLive != null) {
