@@ -39,14 +39,14 @@
                 android:layout_width="22dp"
                 android:layout_height="22dp"
                 android:src="@drawable/icon_video"
-                android:alpha="0.5"/>
+                android:alpha="0.5" android:tint="@android:color/black"/>
             <TextView
                 android:id="@+id/navHomeText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="3dp"
                 android:text="首页"
-                android:textColor="#80FFFFFF"
+                android:textColor="#80000000"
                 android:textSize="11sp"/>
         </LinearLayout>
 
@@ -63,14 +63,14 @@
                 android:layout_width="22dp"
                 android:layout_height="22dp"
                 android:src="@drawable/icon_live"
-                android:alpha="0.5"/>
+                android:alpha="0.5" android:tint="@android:color/black"/>
             <TextView
                 android:id="@+id/navLiveText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="3dp"
                 android:text="直播"
-                android:textColor="#80FFFFFF"
+                android:textColor="#80000000"
                 android:textSize="11sp"/>
         </LinearLayout>
 
@@ -87,14 +87,14 @@
                 android:layout_width="22dp"
                 android:layout_height="22dp"
                 android:src="@drawable/icon_setting"
-                android:alpha="1.0"/>
+                android:alpha="1.0" android:tint="@android:color/black"/>
             <TextView
                 android:id="@+id/navSettingText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="3dp"
                 android:text="设置"
-                android:textColor="@android:color/white"
+                android:textColor="@android:color/black"
                 android:textSize="11sp"/>
         </LinearLayout>
 

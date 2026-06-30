@@ -34,8 +34,8 @@
             android:gravity="center"
             android:orientation="vertical"
             android:background="@drawable/selector_nav_item_bg">
-            <ImageView android:id="@+id/navHomeIcon" android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/icon_video" android:alpha="0.5"/>
-            <TextView android:id="@+id/navHomeText" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="首页" android:textColor="#80FFFFFF" android:textSize="11sp"/>
+            <ImageView android:id="@+id/navHomeIcon" android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/icon_video" android:alpha="0.5" android:tint="@android:color/black"/>
+            <TextView android:id="@+id/navHomeText" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="首页" android:textColor="#80000000" android:textSize="11sp"/>
         </LinearLayout>
 
         <!-- 直播 -->
@@ -47,8 +47,8 @@
             android:gravity="center"
             android:orientation="vertical"
             android:background="@drawable/selector_nav_item_bg">
-            <ImageView android:id="@+id/navLiveIcon" android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/icon_live" android:alpha="0.5"/>
-            <TextView android:id="@+id/navLiveText" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="直播" android:textColor="#80FFFFFF" android:textSize="11sp"/>
+            <ImageView android:id="@+id/navLiveIcon" android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/icon_live" android:alpha="0.5" android:tint="@android:color/black"/>
+            <TextView android:id="@+id/navLiveText" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="直播" android:textColor="#80000000" android:textSize="11sp"/>
         </LinearLayout>
 
         <!-- 设置（当前页，高亮） -->
@@ -59,8 +59,8 @@
             android:gravity="center"
             android:orientation="vertical"
             android:background="@drawable/selector_nav_item_bg">
-            <ImageView android:id="@+id/navSettingIcon" android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/icon_setting" android:alpha="1.0"/>
-            <TextView android:id="@+id/navSettingText" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="设置" android:textColor="@android:color/white" android:textSize="11sp"/>
+            <ImageView android:id="@+id/navSettingIcon" android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/icon_setting" android:alpha="1.0" android:tint="@android:color/black"/>
+            <TextView android:id="@+id/navSettingText" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="设置" android:textColor="@android:color/black" android:textSize="11sp"/>
         </LinearLayout>
 
     </LinearLayout>

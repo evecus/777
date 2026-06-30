@@ -226,14 +226,14 @@
             android:gravity="center_vertical"
             android:paddingStart="16dp"
             android:paddingEnd="8dp"
-            android:background="#881a2035">
+            android:background="@android:color/transparent">
 
             <TextView
                 android:id="@+id/tv_mobile_channel_name"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textColor="#FFFFFFFF"
+                android:textColor="#FF000000"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 android:singleLine="true"
@@ -247,7 +247,7 @@
                 android:padding="10dp"
                 android:src="@drawable/icon_setting"
                 android:scaleType="centerInside"
-                android:tint="#FFFFFFFF" />
+                android:tint="@android:color/black" />
         </LinearLayout>
 
         <!-- 频道列表区域外层容器（持有weight，防止LoadSir注册破坏布局） -->
@@ -263,7 +263,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
-            android:background="#88181e28">
+            android:background="@android:color/transparent">
 
             <!-- 分组列表 -->
             <androidx.recyclerview.widget.RecyclerView
@@ -271,7 +271,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="#881a2035"
+                android:background="@android:color/transparent"
                 android:padding="4dp"
                 android:scrollbars="none" />
 
@@ -283,7 +283,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1.5"
-                android:background="#88181e28"
+                android:background="@android:color/transparent"
                 android:padding="4dp"
                 android:scrollbars="none" />
 
@@ -295,7 +295,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="#881a2035"
+                android:background="@android:color/transparent"
                 android:padding="4dp"
                 android:scrollbars="none" />
         </LinearLayout>
@@ -386,13 +386,13 @@
                 android:layout_width="22dp"
                 android:layout_height="22dp"
                 android:src="@drawable/icon_video"
-                android:alpha="0.5"/>
+                android:alpha="0.5" android:tint="@android:color/black"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="3dp"
                 android:text="首页"
-                android:textColor="#80FFFFFF"
+                android:textColor="#80000000"
                 android:textSize="11sp"/>
         </LinearLayout>
 
@@ -408,13 +408,13 @@
                 android:layout_width="22dp"
                 android:layout_height="22dp"
                 android:src="@drawable/icon_live"
-                android:alpha="1.0"/>
+                android:alpha="1.0" android:tint="@android:color/black"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="3dp"
                 android:text="直播"
-                android:textColor="@android:color/white"
+                android:textColor="@android:color/black"
                 android:textSize="11sp"/>
         </LinearLayout>
 
@@ -430,13 +430,13 @@
                 android:layout_width="22dp"
                 android:layout_height="22dp"
                 android:src="@drawable/icon_setting"
-                android:alpha="0.5"/>
+                android:alpha="0.5" android:tint="@android:color/black"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="3dp"
                 android:text="设置"
-                android:textColor="#80FFFFFF"
+                android:textColor="#80000000"
                 android:textSize="11sp"/>
         </LinearLayout>
 
