@@ -38,8 +38,8 @@ public class LiveChannelItemAdapter extends BaseQuickAdapter<LiveChannelItem, Ba
             tvChannel.setTextColor(mContext.getResources().getColor(R.color.color_1890FF));
         }
         else{
-            tvChannelNum.setTextColor(Color.WHITE);
-            tvChannel.setTextColor(Color.WHITE);
+            tvChannelNum.setTextColor(Color.BLACK);
+            tvChannel.setTextColor(Color.BLACK);
         }
     }
 

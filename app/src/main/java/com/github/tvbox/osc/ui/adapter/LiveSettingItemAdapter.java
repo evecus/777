@@ -36,7 +36,7 @@ public class LiveSettingItemAdapter extends BaseQuickAdapter<LiveSettingItem, Ba
             // 直播地址来源：用青绿色区分
             tvItemName.setTextColor(Color.parseColor("#66DDBB"));
         } else {
-            tvItemName.setTextColor(Color.WHITE);
+            tvItemName.setTextColor(Color.BLACK);
         }
     }
 

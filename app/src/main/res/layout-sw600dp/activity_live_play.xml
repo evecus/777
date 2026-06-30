@@ -47,13 +47,14 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:src="@drawable/icon_video"
-                    android:alpha="0.5"/>
+                    android:alpha="0.5"
+                    android:tint="@android:color/black"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
                     android:text="首页"
-                    android:textColor="#80FFFFFF"
+                    android:textColor="#80000000"
                     android:textSize="11sp"/>
             </LinearLayout>
 
@@ -70,13 +71,14 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:src="@drawable/icon_live"
-                    android:alpha="1.0"/>
+                    android:alpha="1.0"
+                    android:tint="@android:color/black"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
                     android:text="直播"
-                    android:textColor="@android:color/white"
+                    android:textColor="@android:color/black"
                     android:textSize="11sp"/>
             </LinearLayout>
 
@@ -92,13 +94,14 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:src="@drawable/icon_setting"
-                    android:alpha="0.5"/>
+                    android:alpha="0.5"
+                    android:tint="@android:color/black"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
                     android:text="设置"
-                    android:textColor="#80FFFFFF"
+                    android:textColor="#80000000"
                     android:textSize="11sp"/>
             </LinearLayout>
 
@@ -277,7 +280,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:textColor="#FFFFFFFF"
+                    android:textColor="@android:color/black"
                     android:textSize="16sp"
                     android:textStyle="bold"
                     android:singleLine="true"
@@ -290,7 +293,7 @@
                     android:padding="10dp"
                     android:src="@drawable/icon_setting"
                     android:scaleType="centerInside"
-                    android:tint="#FFFFFFFF" />
+                    android:tint="@android:color/black" />
             </LinearLayout>
 
             <!-- 频道列表（分组 | 频道 | 线路），占满剩余空间 -->
@@ -356,21 +359,21 @@
             android:layout_width="360dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:background="@drawable/bg_channel_list"
+            android:background="@drawable/bg_channel_list_light"
             android:orientation="vertical"
             android:padding="14dp">
 
             <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:paddingBottom="10dp">
-                <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="播放设置" android:textColor="#FFFFFFFF" android:textSize="17sp" android:textStyle="bold" />
-                <TextView android:id="@+id/tv_settings_close" android:layout_width="36dp" android:layout_height="36dp" android:text="✕" android:textColor="#FFFFFFFF" android:textSize="18sp" android:gravity="center" />
+                <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="播放设置" android:textColor="@android:color/black" android:textSize="17sp" android:textStyle="bold" />
+                <TextView android:id="@+id/tv_settings_close" android:layout_width="36dp" android:layout_height="36dp" android:text="✕" android:textColor="@android:color/black" android:textSize="18sp" android:gravity="center" />
             </LinearLayout>
 
-            <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#FF444455" android:layout_marginBottom="10dp" />
+            <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#FFE0E0E0" android:layout_marginBottom="10dp" />
 
             <LinearLayout android:layout_width="match_parent" android:layout_height="300dp" android:orientation="horizontal">
-                <androidx.recyclerview.widget.RecyclerView android:id="@+id/mSettingGroupView" android:layout_width="120dp" android:layout_height="match_parent" android:background="#22FFFFFF" android:padding="4dp" android:scrollbars="none" />
-                <View android:layout_width="1dp" android:layout_height="match_parent" android:background="#FF444455" android:layout_marginStart="4dp" android:layout_marginEnd="4dp" />
-                <androidx.recyclerview.widget.RecyclerView android:id="@+id/mSettingItemView" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:background="#22FFFFFF" android:padding="4dp" android:scrollbars="none" />
+                <androidx.recyclerview.widget.RecyclerView android:id="@+id/mSettingGroupView" android:layout_width="120dp" android:layout_height="match_parent" android:background="#FFF2F2F2" android:padding="4dp" android:scrollbars="none" />
+                <View android:layout_width="1dp" android:layout_height="match_parent" android:background="#FFE0E0E0" android:layout_marginStart="4dp" android:layout_marginEnd="4dp" />
+                <androidx.recyclerview.widget.RecyclerView android:id="@+id/mSettingItemView" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:background="#FFFAFAFA" android:padding="4dp" android:scrollbars="none" />
             </LinearLayout>
         </LinearLayout>
     </FrameLayout>
