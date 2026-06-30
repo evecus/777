@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/shape_user_focus"
+    android:background="@drawable/shape_grid_item_bg"
     android:padding="@dimen/vs_1">
 
     <FrameLayout
