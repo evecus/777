@@ -236,7 +236,7 @@ public class LiveSourceActivity extends BaseActivity {
 
             boolean isSelected = (position == selectedIndex);
             // 选中时高亮名称和显示选中图标
-            holder.tvName.setTextColor(isSelected ? Color.parseColor("#4FC3F7") : Color.WHITE);
+            holder.tvName.setTextColor(isSelected ? Color.parseColor("#4FC3F7") : Color.BLACK);
             if (holder.ivSelected != null) {
                 holder.ivSelected.setVisibility(isSelected ? View.VISIBLE : View.GONE);
             }
