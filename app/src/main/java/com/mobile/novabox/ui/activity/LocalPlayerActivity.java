@@ -1,6 +1,8 @@
 package com.mobile.novabox.ui.activity;
 
 import android.content.ContentResolver;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.content.pm.ActivityInfo;
 import android.database.Cursor;
 import android.net.Uri;
@@ -379,6 +381,8 @@ public class LocalPlayerActivity extends BaseActivity {
         isFullScreen = true;
         // 横屏
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
+        // 给窗口设置纯黑背景，彻底遮住 app 全局壁纸
+        getWindow().setBackgroundDrawable(new ColorDrawable(Color.BLACK));
         // 隐藏状态栏和导航栏（沉浸式全屏）
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         View decorView = getWindow().getDecorView();
@@ -408,6 +412,8 @@ public class LocalPlayerActivity extends BaseActivity {
     private void exitFullScreen() {
         isFullScreen = false;
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        // 恢复透明背景
+        getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         // 恢复状态栏和导航栏
         getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_VISIBLE);
@@ -420,15 +426,15 @@ public class LocalPlayerActivity extends BaseActivity {
                 if (lp instanceof LinearLayout.LayoutParams) {
                     ((LinearLayout.LayoutParams) lp).weight = 65;
                 }
+                flPlayerContainer.setLayoutParams(lp);
             } else {
+                // 手机端：先恢复为 WRAP_CONTENT，再由 adjustPlayerHeight 计算 16:9 高度
                 lp.width = ViewGroup.LayoutParams.MATCH_PARENT;
-                lp.height = 0;
+                lp.height = ViewGroup.LayoutParams.WRAP_CONTENT;
                 if (lp instanceof LinearLayout.LayoutParams) {
                     ((LinearLayout.LayoutParams) lp).weight = 0;
                 }
-            }
-            flPlayerContainer.setLayoutParams(lp);
-            if (!PadUiHelper.isPad(this)) {
+                flPlayerContainer.setLayoutParams(lp);
                 adjustPlayerHeight();
             }
         }

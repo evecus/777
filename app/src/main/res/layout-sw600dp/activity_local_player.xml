@@ -127,7 +127,7 @@
         android:layout_height="match_parent"
         android:layout_weight="35"
         android:orientation="vertical"
-        android:background="#EEFAFAFA">
+        android:background="@android:color/transparent">
 
         <!-- 标题栏 -->
         <LinearLayout
