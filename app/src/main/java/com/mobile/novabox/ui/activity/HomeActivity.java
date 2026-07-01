@@ -417,7 +417,14 @@ public class HomeActivity extends BaseActivity {
             if (i < 0) continue;
             View child = lm.findViewByPosition(i);
             if (child != null) {
-                child.setSelected(i == selectedPosition);
+                boolean sel = (i == selectedPosition);
+                child.setSelected(sel);
+                // 代码绘制圆角背景，确保在所有系统版本上圆角生效
+                android.graphics.drawable.GradientDrawable bg = new android.graphics.drawable.GradientDrawable();
+                bg.setShape(android.graphics.drawable.GradientDrawable.RECTANGLE);
+                bg.setCornerRadius(60f);
+                bg.setColor(sel ? 0xBD0CADE2 : android.graphics.Color.TRANSPARENT);
+                child.setBackground(bg);
             }
         }
     }
