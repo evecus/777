@@ -920,6 +920,8 @@ public class PlayActivity extends BaseActivity {
     public void hideSysBar() {
         // 视频播放页：全屏隐藏状态栏和导航栏
         hideStatusBarToo();
+        // 同时清除 BaseActivity 设置的状态栏 padding，避免顶部黑边（手机 + 平板均适用）
+        clearStatusBarPadding();
     }
 
 

@@ -70,6 +70,8 @@ public class LocalPlayerActivity extends BaseActivity {
     private boolean isLocked = false;
     private boolean controlsVisible = false;
     private boolean isFullScreen = false;
+    // 防止 onResume 重复加载播放列表（退出全屏方向切换时会触发 onResume）
+    private boolean isLoaded = false;
 
     // 保存进入全屏前播放器容器的原始 LayoutParams，退出时精确还原
     private ViewGroup.LayoutParams savedPlayerLp = null;
@@ -115,9 +117,11 @@ public class LocalPlayerActivity extends BaseActivity {
             // 直接播 URL，无播放列表
             if (rvPlaylist != null) rvPlaylist.setVisibility(View.GONE);
             if (tvVideoTitle != null) tvVideoTitle.setText(videoTitle != null ? videoTitle : "正在播放");
+            isLoaded = true;
             startPlay(videoUrl);
         } else {
             // 加载文件夹列表
+            isLoaded = true;
             loadFolderAndPlay();
         }
 
@@ -386,7 +390,7 @@ public class LocalPlayerActivity extends BaseActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
         // 给窗口设置纯黑背景，彻底遮住 app 全局壁纸
         getWindow().setBackgroundDrawable(new ColorDrawable(Color.BLACK));
-        // 清除 DecorView 的系统 padding（状态栏/导航栏占位），让内容真正铺满整个屏幕
+        // 隐藏状态栏和导航栏
         View decorView = getWindow().getDecorView();
         decorView.setSystemUiVisibility(
                 View.SYSTEM_UI_FLAG_FULLSCREEN
@@ -398,9 +402,8 @@ public class LocalPlayerActivity extends BaseActivity {
         );
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN
                 | WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
-        // 清除内容区 padding（状态栏高度补偿）
-        View contentView = ((ViewGroup) decorView).getChildAt(0);
-        if (contentView != null) contentView.setPadding(0, 0, 0, 0);
+        // 清除 BaseActivity 设置的状态栏 padding，消除顶部黑边
+        clearStatusBarPadding();
 
         // 保存播放器容器原始 LayoutParams
         if (flPlayerContainer != null) {
@@ -431,27 +434,34 @@ public class LocalPlayerActivity extends BaseActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         // 恢复透明背景
         getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        // 恢复系统 UI
+        // 恢复系统 UI（保持 edge-to-edge + 深色状态栏图标，与 BaseActivity 一致）
         getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN
                 | WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
-        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_VISIBLE);
-
-        // 恢复播放器容器原始 LayoutParams
-        if (flPlayerContainer != null && savedPlayerLp != null) {
-            flPlayerContainer.setLayoutParams(savedPlayerLp);
-            savedPlayerLp = null;
+        int uiFlags = View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+            uiFlags |= View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR;
         }
+        getWindow().getDecorView().setSystemUiVisibility(uiFlags);
 
-        // 恢复右侧列表/标题等视图（需在方向切回竖屏、布局稳定后执行）
+        // 恢复 BaseActivity 设置的状态栏 padding
+        restoreStatusBarPadding();
+
+        // 恢复右侧列表/标题等视图
         hideNonPlayerViews(false);
 
-        // 手机端：等待布局稳定后，重新按屏幕宽度计算 16:9 播放器高度
+        savedPlayerLp = null;
+
+        // 等待方向切换 + 布局稳定后，重新计算播放器区域高度
         if (!PadUiHelper.isPad(this)) {
-            flPlayerContainer.post(() -> {
-                android.util.DisplayMetrics dm = new android.util.DisplayMetrics();
-                getWindowManager().getDefaultDisplay().getMetrics(dm);
-                // 竖屏下宽度是较小值
-                int w = Math.min(dm.widthPixels, dm.heightPixels);
+            // 延迟执行，确保竖屏方向切换完成后再测量
+            handler.postDelayed(() -> {
+                if (flPlayerContainer == null) return;
+                int w = flPlayerContainer.getWidth();
+                if (w <= 0) {
+                    android.util.DisplayMetrics dm = new android.util.DisplayMetrics();
+                    getWindowManager().getDefaultDisplay().getMetrics(dm);
+                    w = Math.min(dm.widthPixels, dm.heightPixels);
+                }
                 int h = w * 9 / 16;
                 ViewGroup.LayoutParams lp = flPlayerContainer.getLayoutParams();
                 lp.width = ViewGroup.LayoutParams.MATCH_PARENT;
@@ -460,7 +470,7 @@ public class LocalPlayerActivity extends BaseActivity {
                     ((LinearLayout.LayoutParams) lp).weight = 0;
                 }
                 flPlayerContainer.setLayoutParams(lp);
-            });
+            }, 300);
         }
 
         if (ivFullscreen != null) ivFullscreen.setImageResource(R.drawable.icon_fullscreen);
@@ -562,6 +572,7 @@ public class LocalPlayerActivity extends BaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        // 全屏退出时方向切换会触发 onResume，此时不重新加载列表，只恢复播放
         if (mVideoView != null && !mVideoView.isPlaying()) mVideoView.resume();
         handler.post(progressRunnable);
     }
