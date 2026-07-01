@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.os.Looper;
 import android.util.DisplayMetrics;
 import android.view.View;
+import android.view.WindowManager;
 
 import com.mobile.novabox.util.PadUiHelper;
 
@@ -82,6 +83,19 @@ public abstract class BaseActivity extends AppCompatActivity implements CustomAd
      * 全屏播放界面（LivePlayActivity）可覆盖此方法为空实现跳过。
      */
     protected void applyStatusBarPadding() {
+        // 代码层强制透明状态栏（兼容 Android 5.0+）
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            getWindow().setStatusBarColor(android.graphics.Color.TRANSPARENT);
+        }
+        // 状态栏图标深色（适配浅色背景）
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            int flags = getWindow().getDecorView().getSystemUiVisibility();
+            flags |= View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR;
+            getWindow().getDecorView().setSystemUiVisibility(flags);
+        }
+        // 让内容延伸到状态栏下，手动加 paddingTop 防止遮挡
         View rootView = getWindow().getDecorView().findViewById(android.R.id.content);
         if (rootView != null) {
             int statusBarHeight = getStatusBarHeight();
