@@ -275,8 +275,6 @@
                 android:padding="4dp"
                 android:scrollbars="none" />
 
-            <View android:layout_width="1dp" android:layout_height="match_parent" android:background="#FF333344" />
-
             <!-- 频道列表 -->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/mChannelGridView"
@@ -286,8 +284,6 @@
                 android:background="@android:color/transparent"
                 android:padding="4dp"
                 android:scrollbars="none" />
-
-            <View android:layout_width="1dp" android:layout_height="match_parent" android:background="#FF333344" />
 
             <!-- 线路列表 -->
             <androidx.recyclerview.widget.RecyclerView

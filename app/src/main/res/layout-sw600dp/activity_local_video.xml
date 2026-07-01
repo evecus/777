@@ -31,6 +31,19 @@
             android:textSize="20sp"
             android:textStyle="bold"/>
 
+        <!-- 刷新按钮 -->
+        <TextView
+            android:id="@+id/tvRefresh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@+id/ivLinkPlay"
+            android:layout_marginEnd="4dp"
+            android:text="刷新"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:padding="10dp" />
+
         <!-- 链接播放按钮 -->
         <ImageView
             android:id="@+id/ivLinkPlay"

@@ -66,6 +66,13 @@ public class LocalVideoActivity extends BaseActivity {
         View ivLinkPlay = findViewById(R.id.ivLinkPlay);
         if (ivLinkPlay != null) ivLinkPlay.setOnClickListener(v -> showLinkDialog());
 
+        // 刷新按钮
+        View tvRefresh = findViewById(R.id.tvRefresh);
+        if (tvRefresh != null) tvRefresh.setOnClickListener(v -> {
+            Toast.makeText(this, "正在扫描本地视频...", Toast.LENGTH_SHORT).show();
+            scanVideos();
+        });
+
         // 文件夹列表
         rvFolders = findViewById(R.id.rvFolders);
         folderAdapter = new VideoFolderAdapter();
@@ -146,6 +153,9 @@ public class LocalVideoActivity extends BaseActivity {
 
     private void scanVideos() {
         hasScanned = true;
+        if (executor.isShutdown()) {
+            executor = Executors.newSingleThreadExecutor();
+        }
         executor.execute(() -> {
             List<VideoFolderAdapter.FolderInfo> folders = scanVideoFolders();
             mainHandler.post(() -> {

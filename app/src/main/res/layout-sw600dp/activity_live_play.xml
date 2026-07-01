@@ -318,7 +318,7 @@
                         android:padding="4dp"
                         android:scrollbars="none" />
 
-                    <View android:layout_width="1dp" android:layout_height="match_parent" android:background="#FF333344" />
+
 
                     <!-- 频道列表（Pad端补充，与手机端一致） -->
                     <androidx.recyclerview.widget.RecyclerView
@@ -330,7 +330,7 @@
                         android:padding="4dp"
                         android:scrollbars="none" />
 
-                    <View android:layout_width="1dp" android:layout_height="match_parent" android:background="#FF333344" />
+
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/mLiveSourceView"
